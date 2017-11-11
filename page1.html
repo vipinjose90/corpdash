@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Corporate Dashboard </title>
+	<link rel="stylesheet" href="page1.css"/>
+    <script src="https://d3js.org/d3.v4.js"></script>
+</head>
+
+<body>
+	<div class="view">
+        <h2>Summary</h2>
+
+        <table id="summary">
+            <thead>
+            <tr>
+                <th> Vertical/Horizontal </th>
+                <th> QA </th>
+				<th> SAP </th>
+				<th> HCM </th>
+				<th> Analytics </th>
+				<th> Cloud </th>
+            </tr>
+            <tr id="BFS">
+                <th> BFS </th>
+            </tr>
+			<tr id="Healthcare">
+                <th> Healthcare </th>
+            </tr>
+			<tr id="Technology">
+                <th> Technology </th>
+            </tr>
+			<tr id="Manlog">
+                <th> Manlog </th>
+            </tr>
+			<tr id="Retail">
+                <th> Retail </th>
+            </tr>
+			<tr id="Others">
+                <th> Others </th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+	
+	<div class="walk" >
+        <h2>Revenue Trend</h2>
+        <svg width="400" height="400" id="RTrend">
+            <g id="Budgets"></g>
+			<g id="yAxis"></g>
+			<g id="xAxis"></g>
+        </svg>
+	</div>
+	<div class="walk">
+		<h2>Margin Trend</h2>
+        <svg width="400" height="400" id="MTrend">
+            <g id="MBudgets"></g>
+			<g id="MyAxis"></g>
+			<g id="MxAxis"></g>
+        </svg>
+    </div>
+	
+<script type="application/javascript" src="page1script.js"></script>
+</body>
