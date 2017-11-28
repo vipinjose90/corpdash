@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Corporate Dashboard </title>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="styles.css"/>
     <script src="https://d3js.org/d3.v4.js"></script>
 </head>
@@ -11,35 +12,35 @@
 <body>
 <div class="container">
 
-
     <div class="view">
         <h2>Project Level Overview</h2>
 
-        <table id="projectTable">
+        <table id="projectTable" >
             <thead>
-
             <tr>
-                <td></td>
-                <td style="text-align:center" colspan="2"> February <span class="glyphicon glyphicon-sort"></span><br/></td>
+                <td style="text-align:center; border-left:0px" rowspan="2" >Client/Project <span class="glyphicon glyphicon-sort"></span></td>
+                <td style="text-align:center" colspan="2" class="firstMonth"> March <br/></td>
+                <td style="text-align:center" colspan="2" class="secondMonth"> April <br/></td>
+                <td style="text-align:center" colspan="2" > MoM Change <br/></td>
 
             </tr>
-                <td style="text-align:right">Client/Project</td>
-                <td id="goalHeader">Revenue</td>
-                <td>Margin</td>
+
+                <td class="firstMonth">Revenue <span class="glyphicon glyphicon-sort"></span></td>
+                <td class="firstMonth">Margin <span class="glyphicon glyphicon-sort"></span></td>
+                <td class="secondMonth">Revenue <span class="glyphicon glyphicon-sort"></span></td>
+                <td class="secondMonth">Margin <span class="glyphicon glyphicon-sort"></span></td>
+                <td class="secondMonth">Revenue % <span class="glyphicon glyphicon-sort"></span></td>
+                <td class="secondMonth">Margin % <span class="glyphicon glyphicon-sort"></span></td>
             </tr>
             </thead>
             <tbody>
-
             </tbody>
         </table>
 
     </div>
-    <div class="view">
-
-
+    <div class="view2">
         <h2>Second Stage</h2>
-        <svg width="500" height="900">
-            <g id="tree"></g>
+        <svg width="900" height="500">
         </svg>
     </div>
 
