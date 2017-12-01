@@ -1,22 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Enriqueta');
+
 table {
-    border-collapse: collapse;
-    font: 14px calibri;
-    width: 720px;
+	table-layout: fixed;
 }
 
-th {
-	font: 18px calibri;
-	font-weight: bold;
+th, td {
+	font-size: 15px;
     text-align: left;
     padding-left: 6px;
+	font-family: 'Enriqueta', serif;	
+	width: 20px;
+	height: 35px
 }
 
 thead td , th{
-    cursor: s-resize;
-}
-
-tbody tr:first-child td {
-    padding-top: 2px;
+    cursor: pointer;
 }
 
 tbody th{
@@ -24,12 +22,46 @@ tbody th{
     font-weight: bold;
 }
 
+#RTrend{
+	height: 200px;	
+	width: 300px
+}
+
+#MTrend{
+	height: 200px;	
+	width: 300px
+}
+
+#part1{
+	height: 300px;
+	width: 100%	
+}
+
+.summary{
+	float: left;
+	width: 50%;
+}
+
 .walk {
 	float: left;
+	width: 25%;
+	height: 100%
+}
+
+#walks{
+	float: right;	
 }
 
 .label{
 	font-weight: bold;
+	font-family: 'Enriqueta', serif;
+	font-size: 12px;
+}
+
+.label2{
+	font-weight: bold;
+	font-family: 'Enriqueta', serif;
+	font-size: 14px;
 }
 
 .bars{
@@ -37,9 +69,46 @@ tbody th{
 	opacity: 0.8;
 }
 
-.value {
-	font: 18px calibri;
-	font-style: normal;
-    text-align: left;
-    padding-left: 6px;
+.incr{
+	fill: #66ff66;
+	opacity: 0.8;
+}
+
+.drop{
+	fill: #FF3333;
+	opacity: 0.8;
+}
+
+.value{
+	
+}
+
+.type1{
+	background-color: #ffebe6;
+}
+
+.type2{
+	background-color: #ffe6b3;
+}
+
+.type3{
+	background-color: #e6ffff;
+}
+
+.type4{
+	background-color: #99ff99;
+}
+
+#snapshot{
+	padding-left: 10px;
+}
+
+.normal{
+	fill: #ddddbb;
+}
+
+.selected{
+	fill: #666633;
+	stroke-width: 2;
+	stroke: #000000;
 }

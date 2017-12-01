@@ -9,57 +9,94 @@
 </head>
 
 <body>
-	<div class="view">
-        <h2>Summary</h2>
-
-        <table id="summary">
+	<svg id='Month' width='1200px' height='60px'>
+	</svg>
+	<div id="part1">
+	<div class="summary">
+        <table id="summary" width="100%">
             <thead>
-            <tr>
-                <th> Vertical/Horizontal </th>
+            <tr id='Horizontal' bgcolor='#adad85'>
+                <th> V/H </th>
                 <th> QA </th>
 				<th> SAP </th>
 				<th> HCM </th>
 				<th> Analytics </th>
 				<th> Cloud </th>
+				<th> Total </th>
             </tr>
-            <tr id="BFS">
-                <th> BFS </th>
-            </tr>
-			<tr id="Healthcare">
-                <th> Healthcare </th>
-            </tr>
-			<tr id="Technology">
-                <th> Technology </th>
-            </tr>
-			<tr id="Manlog">
-                <th> Manlog </th>
-            </tr>
-			<tr id="Retail">
-                <th> Retail </th>
-            </tr>
-			<tr id="Others">
-                <th> Others </th>
-            </tr>
+            <tr id="BFS" > <th bgcolor='#adad85'> BFS </th> </tr>
+			<tr id="Healthcare"> <th bgcolor='#adad85'> Healthcare </th> </tr>
+			<tr id="Technology"> <th bgcolor='#adad85'> Technology </th> </tr>
+			<tr id="Manlog"> <th bgcolor='#adad85'> Manlog </th> </tr>
+			<tr id="Retail"> <th bgcolor='#adad85'> Retail </th> </tr>
+			<tr id="Others"> <th bgcolor='#adad85'> Others </th> </tr>
+			<tr id="Total"> <th bgcolor='#adad85'> Total </th> </tr>
             </thead>
         </table>
     </div>
 	
+	<div class="walk">
+		<table id="snapshot" width="90%">
+        <tr id='Header'>
+		   <th bgcolor='#adad85'> </th>
+           <th bgcolor='#adad85'> Prev </th>
+           <th bgcolor='#adad85'> Curr </th>
+		   <th bgcolor='#adad85'> MoM </th>
+		   <th bgcolor='#adad85'> MoM% </th>
+		</tr>
+		
+        <tr id="Revenue"> <th bgcolor='#adad85'> Revenue </th>  </tr>
+		<tr id="Salary">  <th bgcolor='#adad85'> Salary </th>  </tr>
+		<tr id="Contractors"> <th bgcolor='#adad85'> Subcon </th>  </tr>
+		<tr id="Licenses"> <th bgcolor='#adad85'> License </th> </tr>
+		<tr id="Travel"> <th bgcolor='#adad85'> Travel </th> </tr>
+		<tr id="Margin"> <th bgcolor='#adad85'> Margin </th> </tr>
+		
+		</table>
+    </div>
 	<div class="walk" >
-        <h2>Revenue Trend</h2>
-        <svg width="400" height="400" id="RTrend">
+        <h3> Revenue Trend </h3>
+        <svg id="RTrend">
+			<g id="Actuals"></g>
             <g id="Budgets"></g>
 			<g id="yAxis"></g>
 			<g id="xAxis"></g>
         </svg>
 	</div>
-	<div class="walk">
-		<h2>Margin Trend</h2>
-        <svg width="400" height="400" id="MTrend">
-            <g id="MBudgets"></g>
-			<g id="MyAxis"></g>
-			<g id="MxAxis"></g>
-        </svg>
-    </div>
+	</div>
+	
+	<div id="walks">
+		<svg id="RevWalk" width="200px" height="250px">
+			<text transform='translate(0,20)' class='label2'> REVENUE WALK </text>
+			<text id='RWDisplay' transform='translate(0,35)' class='label2'>  </text>
+			<g id="RevWalkLabel"> </g>
+			<g id="RevWalkId"> </g>
+		</svg>
+		<svg width='25px' height='250px'/>
+		<svg id="MarginWalk" width="200px" height="250px">
+			<text transform='translate(0,20)' class='label2'> MARGIN WALK </text>
+			<text id='MWDisplay' transform='translate(0,35)' class='label2'>  </text>
+			<g id="MarginWalkLabel"> </g>
+			<g id="MarginWalkId"> </g>
+		</svg>
+		<svg width='25px' height='250px'/>
+		<svg id="PplWalk" width="200px" height="250px">
+			<g id='onsite'>
+			<text transform='translate(0,20)' class='label2'> ASSOCIATE MOVEMENT </text>
+			<text transform='translate(0,35)' class='label2'> Onsite </text>
+			<text transform='translate(0,127)' class='label2'> Offshore </text>
+			</g>
+		
+			<g id='PplWalkId'> </g>
+			<g id='offshore'> </g>
+			<g id='offlabel'> </g>
+			<g id='PplWalkLabel'> </g>
+		</svg>
+	</div>
 	
 <script type="application/javascript" src="page1script.js"></script>
+<script type="application/javascript" src="updateRevWalk.js"></script>
+<script type="application/javascript" src="updateSnapshot.js"></script>
+<script type="application/javascript" src="updateMarginWalk.js"></script>
+<script type="application/javascript" src="updatePPMWalk.js"></script>
 </body>
