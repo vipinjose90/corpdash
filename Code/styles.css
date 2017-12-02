@@ -92,8 +92,11 @@ tbody tr .project {
 /*}*/
 
 .label{
-    fill: #ffffff;
-    font: 14px sans-serif;
+    border-bottom-color: #364e74;
+    fill: black;
+    font: 11px sans-serif;
+    font-weight: bold;
+    text-shadow: 3px 3px 4px white
 }
 
 @font-face {
@@ -138,11 +141,12 @@ header {
 }
 
 
-.goalBar{
-    opacity:0.6;
+.agrregateCircle{
+    stroke-width: 2px;
+    r:6;
 }
 
-.goalCircle{
+.projectCircle{
     stroke-width: 3px;
     r:5;
 }
@@ -165,9 +169,10 @@ header {
 }
 
 .link {
+    stroke-linecap: round;
     fill: none;
-    stroke: #555;
-    stroke-opacity: 0.4;
+    stroke: green;
+    stroke-opacity: 0.9;
     stroke-width: 2px;
 }
 
@@ -176,11 +181,6 @@ header {
     stroke-width: 4px;
 }
 
-.selectedLabel {
-    fill: #be2714;
-    font-weight: bolder;
-
-}
 
 .view {
     width: 800px;
@@ -191,10 +191,13 @@ header {
 }
 
 .view2 {
+    top: 50px;
+    left: 800px;
     width: 500px;
     padding: 0.5em;
     float: left;
     resize: both;
+    position: fixed;
 }
 .even{
     background-color: #EBEBEB;
@@ -203,9 +206,89 @@ header {
 
 }
 
+.project {
+    color: grey;
+    background-color: #fdfdfd;
+}
+
 span.glyphicon-sort{
     @include "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
     font-size: 0.8em;
+}
+
+.d3-tip {
+    /*line-height: 5;*/
+    padding-left: 5px;
+    padding-right: 5px;
+    min-width: 300px;
+    /*border-style: outset;*/
+    /*padding: 12px;*/
+    background: floralwhite;
+    color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    pointer-events: none;
+}
+.tooltip-title{
+    font-size:18px;
+    font-family: "Arial Black";
+
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+    /*box-sizing: border-box;*/
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    /*line-height: 1;*/
+    color: rgba(0, 0, 0, 0.8);
+    position: relative;
+    pointer-events: none;
+}
+
+/* Northward tooltips */
+.d3-tip.n:after {
+    content: "\25BC";
+    /*margin: -1px 0 0 0;*/
+    top: 100%;
+    left: 0;
+    text-align: center;
+}
+
+/* Eastward tooltips */
+.d3-tip.e:after {
+    content: "\26A0";
+    /*margin: -4px 0 0 0;*/
+    top: -800px;
+    left: -8px;
+}
+
+/* Southward tooltips */
+.d3-tip.s:after {
+    content: "\25B2";
+    /*margin: 4px 0 1px 0;*/
+    top: -8px;
+    left: 300px;
+    text-align: center;
+}
+
+/* Westward tooltips */
+.d3-tip.w:after {
+    content: "\25B6";
+    /*margin: -4px 0 0 -1px;*/
+    top: 50%;
+    left: 100%;
+}
+
+.legend{
+    border-bottom-color: #364e74;
+    fill: black;
+    font: 12px sans-serif;
+    font-weight: bold;
+}
+
+.dim {
+    opacity: 0.2;
 }
 
 

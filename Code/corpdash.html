@@ -7,12 +7,17 @@
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="styles.css"/>
     <script src="https://d3js.org/d3.v4.js"></script>
+    <script type="text/javascript" src="bower_components/d3-tip/index.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.9.0/d3-legend.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 
 <body>
 <div class="container">
 
     <div class="view">
+
         <h2>Project Level Overview</h2>
 
         <table id="projectTable" >
@@ -38,16 +43,24 @@
         </table>
 
     </div>
+
+
     <div class="view2">
-        <h2>Second Stage</h2>
-        <svg width="900" height="500">
+        <button type="button" id = "button1" style="position: fixed;float: left;right: 455px">Previous Month</button>
+        <button type="button" id = "button2" style="position: fixed;float: left;right: 360px">Current Month</button>
+        <button type="button" id = "button4" style="position: fixed;float: left;right: 275px">Both Months</button>
+        <button type="button" id = "button3" style="position: fixed;float: left;right: 225px;">Reset</button>
+        <h2></h2>
+
+
+        <svg width="900" height="900">
         </svg>
     </div>
 
 </div>
 <!--<script type="application/javascript" src="load_hacker.js"></script>-->
-<script type="application/javascript" src="js/tree.js"></script>
+<script type="application/javascript" src="js/scatter.js"></script>
 <script type="application/javascript" src="js/table.js"></script>
-<script type="application/javascript" src="js/script.js"></script>
+<script type="application/javascript" src="js/nestrecords.js"></script>
 </body>
 </html>

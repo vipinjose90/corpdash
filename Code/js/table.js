@@ -11,8 +11,8 @@ class Table {
 
 
         this.cell = {
-            "width": 500,
-            "height": 500,
+            "width": 600,
+            "height": 600,
             "buffer": 15
         };
 
@@ -28,6 +28,15 @@ class Table {
 
         let thisClass = this
         thisClass.updateTable();
+
+        d3.select(".view2")
+            .selectAll("#button3")
+            .on("click", function() {
+                thisClass.tableElements = thisClass.teamData.slice()
+                thisClass.createTable()
+            })
+
+
 
         d3.select("thead")
             .selectAll("td,th")
@@ -102,6 +111,31 @@ class Table {
 
     updateTable() {
 
+        let transition_speed = 1500
+
+        this.scat = new Scatter()
+        this.scat.createTree(this.tableElements);
+
+
+        d3.select(".view2")
+            .selectAll("#button1")
+            .on("click", function() {
+                thisClass.scat.filterMonth("first")
+            })
+
+        d3.select(".view2")
+            .selectAll("#button2")
+            .on("click", function() {
+                thisClass.scat.filterMonth("second")
+            })
+
+        d3.select(".view2")
+            .selectAll("#button4")
+            .on("click", function() {
+                thisClass.scat.filterMonth("both")
+            })
+
+
         let months = [this.tableElements[0].value.Margin[0].key,this.tableElements[0].value.Margin[1].key]
 
         let currentmonths = d3.selectAll("#projectTable>thead")
@@ -119,6 +153,7 @@ class Table {
         let tab = d3.select("#projectTable>tbody")
             .selectAll("tr").data(this.tableElements)
 
+        //console.log(this.tableElements)
 
             tab.exit().remove()
 
@@ -128,10 +163,13 @@ class Table {
 
         tab
             .on("mouseover",function (d) {
+                thisClass.scat.updateConnect(d.key,d.value.type)
                 d3.select(this).selectAll("th,td ").classed("trhover",true)
+
             })
             .on("mouseleave",function (d) {
                 d3.select(this).selectAll("th,td").classed("trhover",false)
+                thisClass.scat.clearConnect()
             })
 
         let rows = tab.selectAll("th")
@@ -162,6 +200,8 @@ class Table {
                     return d.value
                 }
             })
+
+        rows
             .classed("aggregate",function (d) {
                 return d.type == "aggregate"
             })
@@ -174,83 +214,29 @@ class Table {
 
 
         let cells = []
-        let maxmar = Number.MIN_VALUE;
-        let maxrev = Number.MIN_VALUE;
-        let minmar = Number.MAX_VALUE;
-        let minrev = Number.MAX_VALUE;
+
         rows = tab.selectAll("td")
             .data(function(d) {
-                if(d.value.Margin[0].value > maxmar){
-                    maxmar = d.value.Margin[0].value
-                }
-                if(d.value.Margin[1].value > maxmar){
-                    maxmar = d.value.Margin[1].value
-                }
-                if(d.value.Margin[0].value < minmar){
-                    minmar = d.value.Margin[0].value
-                }
-                if(d.value.Margin[1].value < minmar){
-                    minmar = d.value.Margin[1].value
-                }
-                if(d.value.Revenue[0].value > maxrev){
-                    maxrev = d.value.Revenue[0].value
-                }
-                if(d.value.Revenue[1].value > maxrev){
-                    maxrev = d.value.Revenue[1].value
-                }
-                if(d.value.Revenue[0].value < minrev){
-                    minrev = d.value.Revenue[0].value
-                }
-                if(d.value.Revenue[1].value < minrev){
-                    minrev = d.value.Revenue[1].value
-                }
                 let cells = []
                 if(d.value.type=="project" && d.key !="") {
-                    cells.push({type: "project", vis: "revenue", value: d.value.Revenue[0].value,class:"odd"})
-                    cells.push({type: "project", vis: "margin", value: d.value.Margin[0].value,class:"even"})
-                    cells.push({type: "project", vis: "revenue", value: d.value.Revenue[1].value,class:"odd"})
-                    cells.push({type: "project", vis: "margin", value: d.value.Margin[1].value,class:"even"})
-                    cells.push({type: "project", vis: "revenuediff", value: (100*(d.value.Revenue[1].value-d.value.Revenue[0].value)/d.value.Revenue[0].value).toFixed(2),class:"odd"})
-                    cells.push({type: "project", vis: "margindiff", value: (100*(d.value.Margin[1].value-d.value.Margin[0].value)/d.value.Margin[0].value).toFixed(2),class:"even"})
+                    cells.push({type: "project", vis: "revenue",year:"current", value: d.value.Revenue[0].value,class:"odd"})
+                    cells.push({type: "project", vis: "margin",year:"current", value: d.value.Margin[0].value,class:"even"})
+                    cells.push({type: "project", vis: "revenue",year:"prev", value: d.value.Revenue[1].value,class:"odd"})
+                    cells.push({type: "project", vis: "margin",year:"prev", value: d.value.Margin[1].value,class:"even"})
+                    cells.push({type: "project", vis: "revenuediff",year:"", value: (100*(d.value.Revenue[1].value-d.value.Revenue[0].value)/d.value.Revenue[0].value).toFixed(2),class:"odd"})
+                    cells.push({type: "project", vis: "margindiff",year:"", value: (100*(d.value.Margin[1].value-d.value.Margin[0].value)/d.value.Margin[0].value).toFixed(2),class:"even"})
                 }
                 else if (d.key !=""){
-                    cells.push({type: "aggregate", vis: "revenue", value: d.value.Revenue[0].value,class:"odd"})
-                    cells.push({type: "aggregate", vis: "margin", value: d.value.Margin[0].value,class:"even"})
-                    cells.push({type: "aggregate", vis: "revenue", value: d.value.Revenue[1].value,class:"odd"})
-                    cells.push({type: "aggregate", vis: "margin", value: d.value.Margin[1].value,class:"even"})
-                    cells.push({type: "aggregate", vis: "revenuediff", value: (100*(d.value.Revenue[1].value-d.value.Revenue[0].value)/d.value.Revenue[0].value).toFixed(2)+" %",class:"odd"})
-                    cells.push({type: "aggregate", vis: "margindiff", value: (((100*(d.value.Margin[1].value-d.value.Margin[0].value)/d.value.Margin[0].value).toFixed(2)).toString())+" %",class:"even"})
+                    cells.push({type: "aggregate", vis: "revenue",year:"current", value: d.value.Revenue[0].value,class:"odd"})
+                    cells.push({type: "aggregate", vis: "margin",year:"current", value: d.value.Margin[0].value,class:"even"})
+                    cells.push({type: "aggregate", vis: "revenue",year:"prev", value: d.value.Revenue[1].value,class:"odd"})
+                    cells.push({type: "aggregate", vis: "margin",year:"prev", value: d.value.Margin[1].value,class:"even"})
+                    cells.push({type: "aggregate", vis: "revenuediff",year:"", value: (100*(d.value.Revenue[1].value-d.value.Revenue[0].value)/d.value.Revenue[0].value).toFixed(2)+" %",class:"odd"})
+                    cells.push({type: "aggregate", vis: "margindiff",year:"", value: (((100*(d.value.Margin[1].value-d.value.Margin[0].value)/d.value.Margin[0].value).toFixed(2)).toString())+" %",class:"even"})
                 }
                     return cells
                 }
             )
-
-
-        let xMarginScale = d3.scaleLinear()
-            .domain([minmar,maxmar])
-            .range([this.cell.buffer,this.cell.width-this.cell.buffer*3])
-
-        let xAxis =d3.axisBottom()
-            .scale(xMarginScale)
-            .ticks(4);
-
-        let yRevenueScale = d3.scaleLinear()
-            .domain([minrev,maxrev])
-            .range([this.cell.buffer,this.cell.height-this.cell.buffer*3])
-
-        let yAxis =d3.axisLeft()
-            .scale(yRevenueScale)
-            .ticks(5);
-
-        let forAxis = d3.select(".view2>svg").append('g')
-             .attr('transform', 'translate('+this.cell.buffer*2+',' +(this.cell.height-30)+')')
-            .call(xAxis)
-          //  .call(yAxis);
-
-        d3.select(".view2>svg").append('g')
-            .attr('transform', 'translate(100, 100)')
-            .classed('y axis', true)
-            .call(yAxis);
 
 
 
@@ -258,6 +244,8 @@ class Table {
 
         rows = rows.enter().append("td")
             .merge(rows)
+
+
 
         rows
             .classed("odd",function (d) {
@@ -267,6 +255,7 @@ class Table {
                 return d.class == "even"
             })
             .on("click",function (d) {
+
                 thisClass.updateList(this.parentNode.rowIndex-2)
             })
 
@@ -284,37 +273,41 @@ class Table {
 
         textout.attr("x",0)
             .attr("y",this.cell.height/2 + 4)
-            .classed("node",true)
             .attr("height", this.cell.height )
             .text(function (d) {
                 return d.value
             })
+
+        textout
+            .classed("node",true)
 
         textout.enter()
             .append("text")
             .attr("x",0)
             .attr("y",this.cell.height/2 + 3)
-            .classed("node",true)
-
             .attr("height", this.cell.height )
             .text(function (d) {
                 return d.value
             })
 
-        tab = d3.select("#projectTable>tbody")
-            .selectAll("tr").data(this.tableElements)
-
-
+        textout
+            .classed("node",true)
 
     }
 
     updateList(i) {
-       
+
 
         if (this.tableElements[i].value.type == "project"){
             return
         }
-        if( this.tableElements[i+1].value.type == "aggregate"){
+        if( this.tableElements[i+1] == undefined){
+            this.scat.clearConnect()
+            this.tableElements.splice.apply(this.tableElements, [i+1,0].concat(this.tableElements[i].value.projects));
+        }
+
+        else if( this.tableElements[i+1].value.type == "aggregate" ){
+            this.scat.clearConnect()
             this.tableElements.splice.apply(this.tableElements, [i+1,0].concat(this.tableElements[i].value.projects));
         }
         else{
