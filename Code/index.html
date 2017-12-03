@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Corporate Dashboard </title>
+	<link rel="stylesheet" href="styles.css"/>
+	<link rel="stylesheet" href="styles2.css"/>
+
+    <script src="https://d3js.org/d3.v4.js"></script>
+	<script type="text/javascript" src="bower_components/d3-tip/index.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.9.0/d3-legend.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+
+<body style="background-color: #efefef">
+<div id="con1">
+
+<div class="tab">
+	<button class="tablinks" onclick="openTab(event, 'processbook')">Process Book</button>
+	<button class="tablinks" onclick="openTab(event, 'screencast')">Screen-Cast</button>
+	<button class="tablinks" onclick="openTab(event, 'corporatedashboard')" id="defaultOpen">Corporate Dashboard</button>
+</div>
+	<svg width='20px' height='20px'></svg>
+<div id="corporatedashboard" class="tabcontent">
+	<svg id='Month' width='1200px' height='60px'>
+		<line x1="10" y1="15" x2="1000" y2="15" stroke="gray" stroke-width="2"  />
+	</svg>
+	<div id="part1">
+	<div class="summary">
+        <svg id='snapshot' width='500px' height='300px'>
+			<g id='vertbars'> </g>
+			<g id='horzbars'> </g>
+		</svg>
+    </div>
+	
+	<div class="walk">
+		<svg width='20px' height='70px'></svg>
+		<table id="snapshot" width='200px' height='200px' ">
+        <tr id='Header'>
+		   <th bgcolor='lightsteelblue'> </th>
+           <th bgcolor='lightsteelblue' id='#Prev'> Jan </th>
+           <th bgcolor='lightsteelblue' id='#Curr'> Feb </th>
+		   <th bgcolor='lightsteelblue'> MoM </th>
+		   <th bgcolor='lightsteelblue'> MoM% </th>
+		</tr>
+		
+        <tr id="Revenue"> <th bgcolor='lightsteelblue'> Revenue </th>  </tr>
+		<tr id="Salary">  <th bgcolor='lightsteelblue'> Salary </th>  </tr>
+		<tr id="Contractors"> <th bgcolor='lightsteelblue'> Subcon </th>  </tr>
+		<tr id="Licenses"> <th bgcolor='lightsteelblue'> License </th> </tr>
+		<tr id="Travel"> <th bgcolor='lightsteelblue'> Travel </th> </tr>
+		<tr id="Margin"> <th bgcolor='lightsteelblue'> Margin </th> </tr>
+		
+		</table>
+    </div>
+
+
+	</div>
+	
+	<div id="walks">
+
+			<svg id="RevWalk" width="300px" height="300px">
+				<text transform='translate(0,20)' class='label2'> REVENUE WALK </text>
+				<text id='RWDisplay' transform='translate(0,35)' class='label2'>  </text>
+				<g id="RevWalkLabel"> </g>
+				<g id="RevWalkId"> </g>
+			</svg>
+
+		<svg width='220px' height='250px'/>
+		<svg id="MarginWalk" width="300px" height="300px">
+			<text transform='translate(0,20)' class='label2'> MARGIN WALK </text>
+			<text id='MWDisplay' transform='translate(0,35)' class='label2'>  </text>
+			<g id="MarginWalkLabel"> </g>
+			<g id="MarginWalkId"> </g>
+		</svg>
+		<svg width='220px' height='250px'/>
+		<svg id="PplWalk" width="300px" height="300px">
+			<g id='onsite'>
+			<text transform='translate(0,20)' class='label2'> ASSOCIATE MOVEMENT </text>
+			<text transform='translate(0,35)' class='label2'> Onsite </text>
+			<text transform='translate(0,129)' class='label2'> Offshore </text>
+			</g>
+		
+			<g id='PplWalkId'> </g>
+			<g id='offshore'> </g>
+			<g id='offlabel'> </g>
+			<g id='PplWalkLabel'> </g>
+		</svg>
+		<svg width='30px' height='250px'/>
+	</div>
+	
+	<div id='Clientlist'> </div>
+
+
+
+<div id = "con2">
+
+	<div class="container">
+
+		<div class="view">
+
+			<h2>Project Level Details</h2>
+
+			<table id="projectTable" >
+				<thead>
+				<tr>
+					<td style="text-align:center; border-left:0px" rowspan="2" >Client/Project <span class="glyphicon glyphicon-sort"></span></td>
+					<td style="text-align:center" colspan="2" class="firstMonth"> March <br/></td>
+					<td style="text-align:center" colspan="2" class="secondMonth"> April <br/></td>
+					<td style="text-align:center" colspan="2" > MoM Change <br/></td>
+
+				</tr>
+
+				<td class="firstMonth">Revenue <span class="glyphicon glyphicon-sort"></span></td>
+				<td class="firstMonth">Margin <span class="glyphicon glyphicon-sort"></span></td>
+				<td class="secondMonth">Revenue <span class="glyphicon glyphicon-sort"></span></td>
+				<td class="secondMonth">Margin <span class="glyphicon glyphicon-sort"></span></td>
+				<td class="secondMonth">Revenue % <span class="glyphicon glyphicon-sort"></span></td>
+				<td class="secondMonth">Margin % <span class="glyphicon glyphicon-sort"></span></td>
+				</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
+		</div>
+
+
+		<div class="view2">
+			<button type="button" id = "button1" style="right: 795px">Previous Month</button>
+			<button type="button" id = "button2" style="right: 695px">Current Month</button>
+			<button type="button" id = "button4" style="right: 605px">Both Months</button>
+			<button type="button" id = "button3" style="right: 555px;">Reset</button>
+			<h2></h2>
+
+
+			<svg width="900" height="900">
+			</svg>
+		</div>
+
+	</div>
+</div>
+
+</div>
+<div id="processbook" class="tabcontent">
+	<embed src="data/Process_Book.pdf" width="1500" height="1500" type='application/pdf'>
+</div>
+
+<div id="screencast" class="tabcontent">
+</div>
+
+
+<script type="application/javascript" src="js/page1script.js"></script>
+<script type="application/javascript" src="js/updateRevWalk.js"></script>
+<!--<script type="application/javascript" src="js/updateSnapshot.js"></script>-->
+<script type="application/javascript" src="js/updateMarginWalk.js"></script>
+<script type="application/javascript" src="js/updatePPMWalk.js"></script>
+<script type="application/javascript" src="js/scatter.js"></script>
+<script type="application/javascript" src="js/table.js"></script>
+<script type="application/javascript" src="js/nestrecords.js"></script>
+<script type="application/javascript" src="js/tabs.js"></script>
+
+
+</body>

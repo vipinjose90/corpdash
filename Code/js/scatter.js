@@ -139,7 +139,7 @@ class Scatter {
         console.log(maxmar)
 
         this.xMarginScale = d3.scaleLinear()
-            .domain([minmar-10 , maxmar+10])
+            .domain([minmar-50 , maxmar+50])
             .range([this.cell.buffer * 3.5, this.cell.width])
 
         this.xAxis = d3.axisBottom()
@@ -461,8 +461,8 @@ class Scatter {
                 let text1 = d3.select(".view2>svg").append("text")
                 text1
                     .attr("x",function () {
-                        if(mar0>thisClass.cell.width - 0){
-                            return mar0-200
+                        if(mar0>thisClass.cell.width - 200){
+                            return mar0-210
                         }
                         else{
                             return mar0 + 10
@@ -505,11 +505,12 @@ class Scatter {
                         else
                             return rev1
                     })
-                    .html("(Current) Margin:"+(100*(elem.value.Margin[1].value/elem.value.Revenue[1].value))  + " | " + "Revenue:"+elem.value.Revenue[1].value)
+                    .html("(Current) Margin:"+(100*(elem.value.Margin[1].value/elem.value.Revenue[1].value)).toFixed((1)) + "% | " + "Revenue:"+elem.value.Revenue[1].value)
                     .attr("style",function () {
                         if(mar1>1){
                             return "text-anchor:end"
                         }
+
                     })
                     .classed("label",true)
 

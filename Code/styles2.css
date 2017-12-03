@@ -1,0 +1,146 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Enriqueta');
+
+/*table {*/
+/*}*/
+
+/*th, td {*/
+	/*font-size: 15px;*/
+	/*text-align: left;*/
+	/*padding-left: 6px;*/
+	/*font-family: 'Enriqueta', serif;*/
+	/*!*width: 30px;*!*/
+	/*height: 35px;*/
+/*}*/
+
+/*thead td, th {*/
+	/*cursor: pointer;*/
+/*}*/
+
+/*tbody th {*/
+	/*cursor: pointer;*/
+	/*font-weight: bold;*/
+/*}*/
+
+circle, rect {
+	cursor: pointer;
+}
+
+#RTrend {
+	height: 200px;
+	width: 300px
+}
+
+#MTrend {
+	height: 200px;
+	width: 300px
+}
+
+#part1 {
+	height: 300px;
+	width: 100%
+}
+
+.summary {
+	float: left;
+	width: 50%;
+}
+
+.walk {
+	float: left;
+	width: 25%;
+	height: 100%
+}
+
+#walks {
+	float: right;
+}
+
+.label {
+	font-weight: bold;
+	font-family: 'Enriqueta', serif;
+	font-size: 12px;
+}
+
+.label2 {
+	font-weight: bold;
+	font-family: 'Enriqueta', serif;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.bars {
+	fill: #8FDBEA;
+	opacity: 0.8;
+}
+
+.incr {
+	fill: #5cff00;
+	opacity: 0.8;
+}
+
+.drop {
+	fill: #ff4500;
+	opacity: 0.8;
+}
+
+.value {
+
+}
+
+.type1 {
+	fill: #FA5858;
+}
+
+.type2 {
+	fill: #F5A9A9;
+}
+
+.type3 {
+	fill: #ff9900;
+}
+
+.type4 {
+	fill: #01DFA5;
+}
+
+.bar1 {
+	fill: #FA5858;
+	fill-opacity: 0.2;
+}
+
+.bar2 {
+	fill: #F5A9A9;
+	fill-opacity: 0.2;
+}
+
+.bar3 {
+	fill: #2ECCFA;
+	fill-opacity: 0.2;
+}
+
+.bar4 {
+	fill: #01DFA5;
+	fill-opacity: 0.2;
+}
+
+#snapshot {
+	padding-left: 10px;
+}
+
+.normal {
+	fill: #ddddbb;
+}
+
+.selected {
+	fill: #666633;
+	stroke-width: 2;
+	stroke: #000000;
+}
+
+.selected2 {
+	stroke-width: 2;
+	stroke: #000000;
+}
+

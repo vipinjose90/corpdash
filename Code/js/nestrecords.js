@@ -7,7 +7,7 @@
 //  *
 //  */
 
-createProjectLevelView("Jan","Feb","BFS","QA");
+//createProjectLevelView("Jan","Feb","BFS","QA");
 
 function createProjectLevelView(previousMonth,currentMonth,vertical,horizontal) {
 

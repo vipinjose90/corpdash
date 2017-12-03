@@ -1,5 +1,7 @@
-thead>tr>td{
-    text-align:right;
+
+
+thead > tr > td {
+    text-align: right;
 
 }
 
@@ -10,19 +12,16 @@ thead td {
     background: lightsteelblue;
     border-left: solid 1px #000;
     cursor: s-resize;
-    padding-top:4px;
+    padding-top: 4px;
 
 }
-
-
-
 
 table {
     table-layout: auto;
     border-collapse: collapse;
     font: 11px sans-serif;
     border: solid;
-    padding-top:15px;
+    padding-top: 15px;
 
     /*width: 720px;*/
 }
@@ -38,12 +37,12 @@ th {
 }
 
 td {
-     font-weight: bold;
+    font-weight: bold;
     padding-left: 15px;
     padding-right: 15px;
-     cursor: pointer;
+    cursor: pointer;
     text-align: right;
- }
+}
 
 tbody tr:first-child td {
     padding-top: 6px;
@@ -52,30 +51,29 @@ tbody tr:first-child td {
 
 }
 
-tbody th{
+tbody th {
     padding-top: 5px;
     font-weight: bold;
 
 }
 
-.aggregate{
+.aggregate {
     color: darkblue;
     background: #EBEBEB;
 
 }
 
-
 tbody td {
     padding-left: 15px;
     padding-right: 15px;
     border-left: solid 1px #000;
-    color:black
+    color: black
 
 }
 
 /*tr:hover {*/
-     /*background-color: blue !important;*/
- /*}*/
+/*background-color: blue !important;*/
+/*}*/
 
 .trhover {
     background-color: darkgrey !important;
@@ -88,10 +86,10 @@ tbody tr .project {
 }
 
 /*tbody tr .project:hover {*/
-    /*background-color: #dbdbdb;*/
+/*background-color: #dbdbdb;*/
 /*}*/
 
-.label{
+.label {
     border-bottom-color: #364e74;
     fill: black;
     font: 11px sans-serif;
@@ -105,7 +103,7 @@ tbody tr .project {
 }
 
 @font-face {
-    font-family:'brazil';
+    font-family: 'brazil';
     src: url('assets/brasil_cup_font.otf');
 }
 
@@ -140,17 +138,15 @@ header {
     height: 100px;
 }
 
-
-.agrregateCircle{
+.agrregateCircle {
     stroke-width: 2px;
-    r:6;
+    r: 6;
 }
 
-.projectCircle{
+.projectCircle {
     stroke-width: 3px;
-    r:5;
+    r: 5;
 }
-
 
 .node circle {
     fill: #be2714;
@@ -181,7 +177,6 @@ header {
     stroke-width: 4px;
 }
 
-
 .view {
     width: 800px;
     padding: 0.5em;
@@ -191,18 +186,47 @@ header {
 }
 
 .view2 {
-    top: 50px;
+    top:750px;
     left: 800px;
-    width: 500px;
+    width: 1000px;
     padding: 0.5em;
     float: left;
     resize: both;
-    position: fixed;
+    position: absolute;
+
 }
-.even{
+
+.view2>button {
+    float: left;
+    resize: both;
+    position: absolute;
+
+}
+
+
+.tab>button {
+    background-color: #929292;
+    padding: .5em;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 6px;
+    color: #fff;
+    font-family: 'Enriqueta', serif;
+    font-size: 20px;
+    text-decoration: none;
+    border: none;
+}
+
+.tab>button:hover {
+    border: none;
+    background: #e94700;
+    box-shadow: 0px 0px 1px #777;
+}
+.even {
     background-color: #EBEBEB;
 }
-.odd{
+
+.odd {
 
 }
 
@@ -211,8 +235,8 @@ header {
     background-color: #fdfdfd;
 }
 
-span.glyphicon-sort{
-    @include "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
+span.glyphicon-sort {
+@include "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
     font-size: 0.8em;
 }
 
@@ -228,8 +252,9 @@ span.glyphicon-sort{
     border-radius: 5px;
     pointer-events: none;
 }
-.tooltip-title{
-    font-size:18px;
+
+.tooltip-title {
+    font-size: 18px;
     font-family: "Arial Black";
 
 }
@@ -280,7 +305,7 @@ span.glyphicon-sort{
     left: 100%;
 }
 
-.legend{
+.legend {
     border-bottom-color: #364e74;
     fill: black;
     font: 12px sans-serif;
@@ -297,13 +322,25 @@ span.glyphicon-sort{
 }
 
 @-webkit-keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
+
+
+
+
 
 
