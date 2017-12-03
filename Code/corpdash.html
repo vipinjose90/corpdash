@@ -14,6 +14,13 @@
 </head>
 
 <body>
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'processbook')">Process Book</button>
+    <button class="tablinks" onclick="openTab(event, 'screencast')">Screen-Cast</button>
+    <button class="tablinks" onclick="openTab(event, 'corporatedashboard')" id="defaultOpen">Corporate Dashboard</button>
+</div>
+
+<div id="corporatedashboard" class="tabcontent">
 <div class="container">
 
     <div class="view">
@@ -58,9 +65,18 @@
     </div>
 
 </div>
+</div>
+
+<div id="processbook" class="tabcontent">
+</div>
+
+<div id="screencast" class="tabcontent">
+</div>
 <!--<script type="application/javascript" src="load_hacker.js"></script>-->
 <script type="application/javascript" src="js/scatter.js"></script>
 <script type="application/javascript" src="js/table.js"></script>
 <script type="application/javascript" src="js/nestrecords.js"></script>
+<script type="application/javascript" src="js/tabs.js"></script>
+
 </body>
 </html>

@@ -220,19 +220,19 @@ class Table {
                 let cells = []
                 if(d.value.type=="project" && d.key !="") {
                     cells.push({type: "project", vis: "revenue",year:"current", value: d.value.Revenue[0].value,class:"odd"})
-                    cells.push({type: "project", vis: "margin",year:"current", value: d.value.Margin[0].value,class:"even"})
+                    cells.push({type: "project", vis: "margin",year:"current", value: ((100*(d.value.Margin[0].value/d.value.Revenue[0].value)).toFixed(1).toString())+" %",class:"even"})
                     cells.push({type: "project", vis: "revenue",year:"prev", value: d.value.Revenue[1].value,class:"odd"})
-                    cells.push({type: "project", vis: "margin",year:"prev", value: d.value.Margin[1].value,class:"even"})
+                    cells.push({type: "project", vis: "margin",year:"prev", value: ((100*(d.value.Margin[1].value/d.value.Revenue[1].value)).toFixed(1).toString())+" %",class:"even"})
                     cells.push({type: "project", vis: "revenuediff",year:"", value: (100*(d.value.Revenue[1].value-d.value.Revenue[0].value)/d.value.Revenue[0].value).toFixed(2),class:"odd"})
-                    cells.push({type: "project", vis: "margindiff",year:"", value: (100*(d.value.Margin[1].value-d.value.Margin[0].value)/d.value.Margin[0].value).toFixed(2),class:"even"})
+                    cells.push({type: "project", vis: "margindiff",year:"", value: (100*(d.value.Margin[1].value/d.value.Revenue[1].value-d.value.Margin[0].value/d.value.Revenue[0].value)).toFixed(2).toString()+" %",class:"even"})
                 }
                 else if (d.key !=""){
                     cells.push({type: "aggregate", vis: "revenue",year:"current", value: d.value.Revenue[0].value,class:"odd"})
-                    cells.push({type: "aggregate", vis: "margin",year:"current", value: d.value.Margin[0].value,class:"even"})
+                    cells.push({type: "aggregate", vis: "margin",year:"current", value: ((100*(d.value.Margin[0].value/d.value.Revenue[0].value)).toFixed(1).toString())+" %",class:"even"})
                     cells.push({type: "aggregate", vis: "revenue",year:"prev", value: d.value.Revenue[1].value,class:"odd"})
-                    cells.push({type: "aggregate", vis: "margin",year:"prev", value: d.value.Margin[1].value,class:"even"})
+                    cells.push({type: "aggregate", vis: "margin",year:"prev", value: ((100*(d.value.Margin[1].value/d.value.Revenue[1].value)).toFixed(1).toString())+" %",class:"even"})
                     cells.push({type: "aggregate", vis: "revenuediff",year:"", value: (100*(d.value.Revenue[1].value-d.value.Revenue[0].value)/d.value.Revenue[0].value).toFixed(2)+" %",class:"odd"})
-                    cells.push({type: "aggregate", vis: "margindiff",year:"", value: (((100*(d.value.Margin[1].value-d.value.Margin[0].value)/d.value.Margin[0].value).toFixed(2)).toString())+" %",class:"even"})
+                    cells.push({type: "aggregate", vis: "margindiff",year:"", value: (100*(d.value.Margin[1].value/d.value.Revenue[1].value-d.value.Margin[0].value/d.value.Revenue[0].value)).toFixed(2).toString()+" %",class:"even"})
                 }
                     return cells
                 }
