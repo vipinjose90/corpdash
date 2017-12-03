@@ -1,4 +1,5 @@
 //Set the month circles
+
 var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 d3.select('#Month').selectAll('circle').data(month).enter().append('circle')
 	.attr('cx', function(d,i){return i*90+10;})
