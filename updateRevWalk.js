@@ -62,11 +62,11 @@ function updateRevWalk(data, prev, curr, vert, horiz, client, project){
 	}
 	
 	var max = (values[0].val>values[5].val)? values[0].val : values[5].val;
-	var ymax = 250;
-	var xmax = 200;
+	var ymax = 280;
+	var xmax = 300;
 	
 	var xScale = d3.scaleLinear().domain([0, 360]).range([0, xmax-5]);
-	var yScale = d3.scaleLinear().domain([0, max]).range([1, 120]);
+	var yScale = d3.scaleLinear().domain([0, max]).range([1, 150]);
 	
 	var revwalk = d3.select('#RevWalk');
 	revwalk = revwalk.selectAll('rect').data(values);
@@ -74,27 +74,30 @@ function updateRevWalk(data, prev, curr, vert, horiz, client, project){
 	
 	revwalk.attr('x', function(d,i){ return xScale(i*60); })
 		.attr('y', function (d, i) { return yScale(d.start); })
-		.attr('transform', 'translate(' + 5 + ',' + (ymax-50) +') scale(1,-1)')
+		.attr('transform', 'translate(' + 5 + ',' + (ymax-65) +') scale(1,-1)')
 		.attr('width', function (d) { return xScale(50); })
 		.attr('height', function(d){ return yScale(Math.abs(d.val)); })
 		.classed('bars', true);
 	
-	revwalk.filter(function(d,i){ return i>0&&i<5}).classed('incr', true);
+	revwalk.classed('incr', false);
+	revwalk.classed('drop', false);
+	
+	revwalk.filter(function(d,i){ return (i>0&&i<5)&&d.val>0}).classed('incr', true);
 	revwalk.filter(function(d){ return d.val<0}).classed('drop', true);	
 	
 	revwalk = d3.select('#RevWalkId').selectAll('text').data(values);
 	revwalk = revwalk.enter().append('text').merge(revwalk);					
 	revwalk.text(function(d){ return d.id})
-		.attr('transform', function(d,i){ return 'translate(' + (xScale(i*60)+20) + ',' + (ymax-45) +')' + ' rotate(-60)'})
-		.classed('label', true)
+		.attr('transform', function(d,i){ return 'translate(' + (xScale(i*60)+25) + ',' + (ymax-55) +')' + ' rotate(-60)'})
+		.classed('label2', true)
 		.attr('text-anchor','end');
 		
 	revwalk = d3.select('#RevWalkLabel').selectAll('text').data(values);
 	revwalk = revwalk.enter().append('text').merge(revwalk);					
 	revwalk.attr('transform', function(d,i){ 
-				var t = (ymax-50-10)-yScale(d.start+Math.abs(d.val));
-				return 'translate(' + (xScale(i*60)+5) + ',' + t +')';
+				var t = (ymax-65-10)-yScale(d.start+Math.abs(d.val));
+				return 'translate(' + (xScale(i*60)+10) + ',' + t +')';
 			})
 		   .text(function(d){ return d.val.toFixed(2);})
-		   .classed('label', true);
+		   .classed('label2', true);
 }

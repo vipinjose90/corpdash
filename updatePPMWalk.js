@@ -21,10 +21,11 @@ function updatePPMWalk(data, prev, curr, vert, horiz, client, project){
     });
 	
 	var min, max;
-	for(var i=0; i<6; i++){
+	for(var i=0; i<7; i++){
 		table[i].on_diff = table[i].curr_on - table[i].prev_on;
 		table[i].off_diff = table[i].curr_off - table[i].prev_off;
 	}
+	console.log(table);
 	
 	//Plot onsite variation
 	min = Number.MAX_VALUE;
@@ -35,8 +36,8 @@ function updatePPMWalk(data, prev, curr, vert, horiz, client, project){
 	}
 	
 	//Draw the chart
-	var ymax = 250;
-	var xmax = 200;
+	var ymax = 300;
+	var xmax = 300;
 	
 	//Set yScale
 	var range;
@@ -69,11 +70,11 @@ function updatePPMWalk(data, prev, curr, vert, horiz, client, project){
 	pplwalk = pplwalk.enter().append('text').merge(pplwalk);					
 	pplwalk.text(function(d){ return d.on_diff})
 		.attr('transform', function(d,i){ 
-			var t = 105-yScale(d.on_diff);
-			if(d.on_diff<0) t = 105 - yScale(0);
+			var t = 106-yScale(d.on_diff);
+			if(d.on_diff<0) t = 106 - yScale(0);
 			
-			return 'translate(' + (xScale(i*60)+20) + ',' + t +')'})
-		.classed('label', true)
+			return 'translate(' + (xScale(i*60)+30) + ',' + t +')'})
+		.classed('label2', true)
 		.attr('text-anchor','end');
 		
 	//Offshore Chart	
@@ -85,8 +86,8 @@ function updatePPMWalk(data, prev, curr, vert, horiz, client, project){
 	}
 	
 	//Draw the chart
-	ymax = 250;
-	xmax = 200;
+	ymax = 280;
+	xmax = 300;
 	
 	//Set yScale
 	var range;
@@ -106,7 +107,7 @@ function updatePPMWalk(data, prev, curr, vert, horiz, client, project){
 	
 	pplwalk.attr('x', function(d,i){ return xScale(i*60); })
 		.attr('y', function (d, i) { if(d.off_diff>0) return yScale(0); return yScale(d.off_diff);})
-		.attr('transform', 'translate(' + 5 + ',' + 200 +') scale(1,-1)')
+		.attr('transform', 'translate(' + 5 + ',' + 210 +') scale(1,-1)')
 		.attr('width', function (d) { return xScale(50); })
 		.attr('height', function(d){ return hScale(Math.abs(d.off_diff)); })
 		.classed('bars', true);
@@ -120,19 +121,19 @@ function updatePPMWalk(data, prev, curr, vert, horiz, client, project){
 	pplwalk = pplwalk.enter().append('text').merge(pplwalk);					
 	pplwalk.text(function(d){ return d.off_diff})
 		.attr('transform', function(d,i){ 
-			var t = 195-yScale(d.off_diff);
-			if(d.off_diff<0) t = 195 - yScale(0);
-			
-			return 'translate(' + (xScale(i*60)+20) + ',' + t +')'})
-		.classed('label', true)
+			var t = 205-yScale(d.off_diff);
+			if(d.off_diff<0) t = 205 - yScale(0);
+			console.log('Hi');
+			return 'translate(' + (xScale(i*60)+30) + ',' + t +')'})
+		.classed('label2', true)
 		.attr('text-anchor','end');	
 	
 	//ASSIGN THE LABEL
 	revwalk = d3.select('#PplWalkId').selectAll('text').data(table);
 	revwalk = revwalk.enter().append('text').merge(revwalk);					
 	revwalk.text(function(d){ return d.id})
-		.attr('transform', function(d,i){ return 'translate(' + (xScale(i*60)+20) + ',' + (ymax-45) +')' + ' rotate(-60)'})
-		.classed('label', true)
+		.attr('transform', function(d,i){ return 'translate(' + (xScale(i*60)+25) + ',' + (ymax-45) +')' + ' rotate(-60)'})
+		.classed('label2', true)
 		.attr('text-anchor','end');
 }
 

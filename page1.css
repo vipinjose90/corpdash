@@ -1,16 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Enriqueta');
 
 table {
-	table-layout: fixed;
+	display: block;
 }
 
 th, td {
+	border-collapse: collapse;
 	font-size: 15px;
     text-align: left;
     padding-left: 6px;
 	font-family: 'Enriqueta', serif;	
-	width: 20px;
-	height: 35px
+	width: 30px;
+	height: 35px;
 }
 
 thead td , th{
@@ -20,6 +21,10 @@ thead td , th{
 tbody th{
     cursor:pointer;
     font-weight: bold;
+}
+
+circle, rect{
+	cursor: pointer;	
 }
 
 #RTrend{
@@ -62,6 +67,7 @@ tbody th{
 	font-weight: bold;
 	font-family: 'Enriqueta', serif;
 	font-size: 14px;
+	cursor: pointer;
 }
 
 .bars{
@@ -84,19 +90,39 @@ tbody th{
 }
 
 .type1{
-	background-color: #ffebe6;
+	fill: #FA5858;
 }
 
 .type2{
-	background-color: #ffe6b3;
+	fill: #F5A9A9;
 }
 
 .type3{
-	background-color: #e6ffff;
+	fill: #ff9900;
 }
 
 .type4{
-	background-color: #99ff99;
+	fill: #01DFA5;
+}
+
+.bar1{
+	fill: #FA5858;
+	fill-opacity: 0.2;
+}
+
+.bar2{
+	fill: #F5A9A9;
+	fill-opacity: 0.2;
+}
+
+.bar3{
+	fill: #2ECCFA;
+	fill-opacity: 0.2;
+}
+
+.bar4{
+	fill: #01DFA5;
+	fill-opacity: 0.2;
 }
 
 #snapshot{
@@ -109,6 +135,11 @@ tbody th{
 
 .selected{
 	fill: #666633;
+	stroke-width: 2;
+	stroke: #000000;
+}
+
+.selected2{
 	stroke-width: 2;
 	stroke: #000000;
 }

@@ -57,6 +57,7 @@ function updateMarginWalk(data, prev, curr, vert, horiz, client, project){
 		
 		cumdiff += table[i].diff;
 		table[i].percent = (prevMargin + cumdiff)/table[0].curr;
+		console.log(table[i].diff, prevMargin, cumdiff);
 		table[i].diff = (table[i].percent - prevPercent)*100;
 		prevPercent = table[i].percent;
 	}
@@ -111,18 +112,15 @@ function updateMarginWalk(data, prev, curr, vert, horiz, client, project){
 		if(highest < values[i].val) highest = values[i].val;
 	}
 	
-	console.log(values);
-	console.log(lowest);
-	console.log(highest);
 	var range = highest - lowest;
 	
 	//Draw the chart
-	var ymax = 250;
-	var xmax = 200;
+	var ymax = 280;
+	var xmax = 300;
 	
 	var xScale = d3.scaleLinear().domain([0, 420]).range([0, xmax-5]);
-	var yScale = d3.scaleLinear().domain([lowest, highest]).range([1, 120]);
-	var hScale = d3.scaleLinear().domain([0, range]).range([1,120]);
+	var yScale = d3.scaleLinear().domain([lowest, highest]).range([1, 150]);
+	var hScale = d3.scaleLinear().domain([0, range]).range([1,150]);
 	
 	var revwalk = d3.select('#MarginWalk');
 	revwalk = revwalk.selectAll('rect').data(values);
@@ -130,7 +128,7 @@ function updateMarginWalk(data, prev, curr, vert, horiz, client, project){
 	
 	revwalk.attr('x', function(d,i){ return xScale(i*60); })
 		.attr('y', function (d, i) { return yScale(d.start); })
-		.attr('transform', 'translate(' + 5 + ',' + (ymax-50) +') scale(1,-1)')
+		.attr('transform', 'translate(' + 5 + ',' + (ymax-65) +') scale(1,-1)')
 		.attr('width', function (d) { return xScale(50); })
 		.attr('height', function(d){ return hScale(Math.abs(d.val)); })
 		.classed('bars', true);
@@ -144,15 +142,15 @@ function updateMarginWalk(data, prev, curr, vert, horiz, client, project){
 	revwalk = revwalk.enter().append('text').merge(revwalk);					
 	revwalk.text(function(d){ return d.id})
 		.attr('transform', function(d,i){ return 'translate(' + (xScale(i*60)+20) + ',' + (ymax-45) +')' + ' rotate(-60)'})
-		.classed('label', true)
+		.classed('label2', true)
 		.attr('text-anchor','end');
 		
 	revwalk = d3.select('#MarginWalkLabel').selectAll('text').data(values);
 	revwalk = revwalk.enter().append('text').merge(revwalk);					
 	revwalk.attr('transform', function(d,i){ 
-				var t = (ymax-50-10)-yScale(d.start+Math.abs(d.val));
+				var t = (ymax-65-10)-yScale(d.start+Math.abs(d.val));
 				return 'translate(' + (xScale(i*60)+5) + ',' + t +')';
 			})
 		   .text(function(d){ return d.val.toFixed(1)+'%';})
-		   .classed('label', true);
+		   .classed('label2', true);
 }
