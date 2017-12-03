@@ -12,7 +12,7 @@
 function createProjectLevelView(previousMonth,currentMonth,vertical,horizontal) {
 
 
-    d3.csv("data/Summary.csv", function (error, monthData) {
+    d3.csv("Code/data/Summary.csv", function (error, monthData) {
 
         /**
          * Loads in the tree information from fifa-tree.csv and calls createTree(csvData) to render the tree.

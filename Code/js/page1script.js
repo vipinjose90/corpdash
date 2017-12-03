@@ -21,11 +21,11 @@ var associate_data = [];
 var prev = 'Jan';
 var curr = 'Feb';
 
-d3.csv("data/Associate.csv", function (error, csvData) {
+d3.csv("Code/data/Associate.csv", function (error, csvData) {
 	 setAssociateData(csvData);
 });
 
-d3.csv("data/Summary.csv", function (error, csvData) {
+d3.csv("Code/data/Summary.csv", function (error, csvData) {
 	 setData(csvData);
 });
 
